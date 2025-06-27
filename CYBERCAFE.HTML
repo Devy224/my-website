@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyrene Cyber Tech</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body, html { margin:0; padding:0; font-family:Arial,sans-serif; background:#f4f4f4; }
+    .hero { height:80vh; background:linear-gradient(135deg,#0f2027,#203a43,#2c5364); background-size:400% 400%; animation:gradient 15s ease infinite; display:flex; align-items:center; justify-content:center; color:#fff; text-align:center; }
+    @keyframes gradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+    .hero h1 { font-size:3.5rem; text-shadow:2px 2px 8px rgba(0,0,0,0.7); }
+    .services .icon { font-size:2rem; margin-bottom:0.5rem; }
+    .gallery-upload { border:2px dashed #aaa; border-radius:10px; padding:30px; background:#fff; text-align:center; }
+    .gallery-upload input { display:none; }
+    .gallery-preview { display:flex; flex-wrap:wrap; gap:15px; margin-top:20px; justify-content:center; }
+    .gallery-preview img { width:150px; height:150px; object-fit:cover; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2); }
+    .testimonial { font-style:italic; color:#555; }
+    footer { background:#333; color:#fff; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1>Cyrene Cyber Tech</h1>
+      <p class="lead">Fast Internet • Gaming • Printing • Workspace</p>
+      <a href="#services" class="btn btn-light btn-lg">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Our Services</h2>
+      <div class="row text-center">
+        <div class="col-md-4 mb-4">
+          <div class="icon">💻</div>
+          <h4>High‑Speed Internet</h4>
+          <p>Reliable Wi‑Fi & Ethernet for browsing, video calls, research.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="icon">🎮</div>
+          <h4>Gaming Stations</h4>
+          <p>Powerful gaming PCs & consoles with comfy chairs and headsets.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="icon">🖨️</div>
+          <h4>Printing • Scanning</h4>
+          <p>Fast, affordable B/W & color printing, scanning, photocopying.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="icon">🏢</div>
+          <h4>Workspace Rental</h4>
+          <p>Quiet hourly workspaces with power outlets and desks.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="icon">☕</div>
+          <h4>Refreshments</h4>
+          <p>Coffee, tea & snacks served as you work or game.</p>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="icon">💼</div>
+          <h4>Online Booking</h4>
+          <p>Reserve seats or stations in advance; packages coming soon!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">What Our Customers Say</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <p class="testimonial">“The internet is super fast, and the staff is always helpful and friendly... Highly recommended!” – Enrique Q. :contentReference[oaicite:5]{index=5}</p>
+          <p class="testimonial">“I visited Cyber Cafe Central recently and had a great time. The atmosphere was cozy, service excellent.” – Colin B. :contentReference[oaicite:6]{index=6}</p>
+          <p class="testimonial">“The Cyber Cafe provided exceptional internet services with top‑notch equipment and a comfortable environment... Highly recommended!” – Danny W. :contentReference[oaicite:7]{index=7}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Upload -->
+  <section id="gallery" class="py-5">
+    <div class="container text-center">
+      <h2 class="mb-4">Upload Your Photos</h2>
+      <div class="gallery-upload mx-auto" style="max-width:600px;">
+        <label for="fileInput" class="btn btn-outline-primary btn-lg">
+          Select Images to Upload
+        </label>
+        <input type="file" id="fileInput" accept="image/*" multiple>
+        <div id="preview" class="gallery-preview"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 text-center">
+    <div class="container">
+      <p>&copy; 2025 Cyrene Cyber Tech</p>
+      <p>Email: <a href="mailto:info@cyrenecyber.co.ke" style="color:#fff;">cyrenecyber14@gmail.com</a> | Phone: +254 717760221</p>
+      <p>123 Cyber Street, Nairobi, Kenya</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('fileInput').addEventListener('change', e => {
+      const preview = document.getElementById('preview');
+      preview.innerHTML = '';
+      Array.from(e.target.files).forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        img.onload = () => URL.revokeObjectURL(img.src);
+        preview.appendChild(img);
+      });
+    });
+  </script>
+</body>
+</html>
